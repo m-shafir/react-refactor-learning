@@ -20,7 +20,14 @@ function NewPost({ onCancel, setPosts }) {
       author,
     };
 
-    console.log(postData);
+    fetch("http://localhost:8080/posts", {
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers: {
+        "content-Type": "application/json",
+      },
+    });
+
     setPosts((prev) => [...prev, postData]);
     onCancel();
   }
