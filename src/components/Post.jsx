@@ -1,6 +1,6 @@
 function Post({ author, body }) {
   return (
-    <div>
+    <div className="my-12">
       <p>{author}</p>
       <p>{body}</p>
     </div>
