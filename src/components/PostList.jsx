@@ -1,14 +1,34 @@
+import { useState } from "react";
 import NewPost from "./NewPost";
 import Post from "./Post";
 import styles from "./PostList.module.css";
+import Modal from "./Modal";
 
-function PostList() {
+function PostList({ isOpen, onClose }) {
+  const [enteredBody, setEnteredBody] = useState("");
+  const [author, setAuthor] = useState("");
+
+  function changeBodyHandler(e) {
+    setEnteredBody(e.target.value);
+  }
+
+  function changeAuthor(e) {
+    setAuthor(e.target.value);
+  }
+
   return (
     <>
-      <NewPost />
+      {isOpen && (
+        <Modal onClose={onClose}>
+          <NewPost
+            changeBodyHandler={changeBodyHandler}
+            changeAuthor={changeAuthor}
+          />
+        </Modal>
+      )}
       <ul className={styles.posts}>
-        <Post author="Merin Cyriac" body="React is Awesome" />
-        <Post author="Muhammed Shafir" body="React with NEXT JS is Superb!!!" />
+        <Post author={author} body="React is Awesome" />
+        <Post author={author} body="React with NEXT JS is Superb!!!" />
       </ul>
     </>
   );
