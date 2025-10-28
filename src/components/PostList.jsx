@@ -23,6 +23,7 @@ function PostList({ isOpen, onClose }) {
           <NewPost
             changeBodyHandler={changeBodyHandler}
             changeAuthor={changeAuthor}
+            onCancel={onClose}
           />
         </Modal>
       )}
